@@ -1,3 +1,6 @@
+using FoodMenu.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace FoodMenu
 {
     public class Program
@@ -8,6 +11,9 @@ namespace FoodMenu
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<FoodMenuContext>(options => 
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
             var app = builder.Build();
 
