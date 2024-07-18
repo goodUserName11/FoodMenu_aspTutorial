@@ -1,0 +1,27 @@
+﻿@model List<FoodMenu.Models.Dish>
+@{
+    ViewData["Title"] = "FoodMenuIndex";
+}
+
+<div class="container">
+    <div class="">
+        @foreach(var item in Model)
+        {
+            <div class="card col-sm-2" >
+                <img src="@item.ImageUrl" class="card-img-top">
+                <div class="card-body">
+                    
+                        <h6 class="card-title">@item.Name</h6>
+                    <div class="card-text">
+                        @item.Price.ToString("N2") Rub
+                    </div>
+
+                    <a class="btn btn-primary stretched-link" asp-action="Details" asp-route-id="@item.Id">
+                        View info
+                    </a>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
